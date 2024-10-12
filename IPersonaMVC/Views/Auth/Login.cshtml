@@ -1,0 +1,61 @@
+﻿@model IPersonaMVC.Models.Usuario
+
+<style>
+    .form-container {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .login-form {
+        width: 100%;
+        max-width: 630px;
+        padding: 15px;
+        margin: auto;
+        background-color: #f7f7f7; /* Color de fondo */
+        border: 1px solid #ccc; /* Borde sólido */
+        border-radius: 8px; /* Bordes redondeados */
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra sutil */
+        transition: all 0.3s; /* Transición suave para efectos de hover */
+        margin-top: 200px;
+    }
+
+        .login-form:hover {
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15); /* Sombra más intensa al pasar el mouse */
+        }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 20px; /* Espacio debajo del título */
+    }
+
+    .center-btn {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+    }
+</style>
+
+<div class="form-container">
+    <form asp-action="Login" method="post" class="login-form">
+        <h2>Login</h2>
+        <div class="form-group">
+            <label for="NombreUsuario">Username:</label>
+            <input asp-for="NombreUsuario" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="ClaveUsuario">Password:</label>
+            <input asp-for="ClaveUsuario" type="password" class="form-control" />
+        </div>
+        <div class="form-group center-btn">
+            <input type="submit" value="Login" class="btn btn-primary" />
+        </div>
+        <br />
+        @if (ViewBag.Error != null)
+        {
+            <div class="alert alert-danger">@ViewBag.Error</div>
+        }
+    </form>
+</div>
